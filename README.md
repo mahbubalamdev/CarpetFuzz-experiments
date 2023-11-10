@@ -22,6 +22,7 @@ cd CarpetFuzz-experiments
 # Build image
 sudo docker build -t
 carpetfuzz-experiment:latest .
+docker build -t mdalam/carpetfuzz-experiment .
 # Create container
 sudo docker run -d -name
 "carpetfuzz-experiment"

@@ -201,7 +201,7 @@ WORKDIR /root/dep
 RUN git clone https://github.com/facebook/zstd; cd zstd; make -j install; ln -s /lib/x86_64-linux-gnu/libzstd.so.1 /lib/x86_64-linux-gnu/libzstd.so
 RUN git clone https://github.com/esri/lerc; cd lerc; mkdir tmp; cd tmp; cmake ..; make -j install; ln -s /usr/local/lib/libLerc.so /lib/x86_64-linux-gnu/libLerc.so; ln -s /usr/local/lib/libLerc.so.4 /lib/x86_64-linux-gnu/libLerc.so.4
 RUN git clone https://github.com/ofalk/libdnet.git; cd libdnet; ./configure; make -j install
-RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; --select-version=ixgbe:5.7.1,i40e:2.9.21; make -j; make install
+RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; ./configure --select-version=ixgbe:5.7.1,i40e:2.9.21; make -j; make install
 RUN wget -O- http://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.8.tar.gz| tar zxv; cd spread-sheet-widget-0.8; ./configure;make -j;make install
 RUN rm -rf /usr/local/go && wget -O- https://go.dev/dl/go1.19.3.linux-amd64.tar.gz |tar zxv -C /usr/local; 
 RUN echo "export GOPATH=/root/go" >> ~/.bashrc; echo "export PATH=$PATH:/root/go/bin:/usr/local/go/bin" >> ~/.bashrc
