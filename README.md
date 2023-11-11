@@ -22,14 +22,10 @@ cd CarpetFuzz-experiments
 # Build image
 sudo docker build -t
 carpetfuzz-experiment:latest .
-docker build -t mdalam/carpetfuzz-experiment .
+sudo docker build -t mdalam/carpetfuzz-experiment .
 # Create container
-sudo docker run -d -name
-"carpetfuzz-experiment"
-carpetfuzz-experiment:latest tail -f
-/dev/null
-sudo docker exec -it
-carpetfuzz-experiment bash
+sudo docker run -d -name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null
+sudo docker exec -it carpetfuzz-experiment bash
 ```
 
 ## Preprossing
