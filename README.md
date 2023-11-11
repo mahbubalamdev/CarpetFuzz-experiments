@@ -17,11 +17,10 @@ Our benchmark includes **50 executable programs**. To alleviate the manual effor
 
 ```
 # Download CarpetFuzz repo with the submodules
-git clone https://github.com/waugustus/CarpetFuzz-experiments
+git clone https://github.com/mahbubalamdev/CarpetFuzz-experiments
 cd CarpetFuzz-experiments
 # Build image
-sudo docker build -t
-carpetfuzz-experiment:latest .
+
 sudo docker build -t mdalam/carpetfuzz-experiment .
 # Create container
 sudo docker run -d -name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null

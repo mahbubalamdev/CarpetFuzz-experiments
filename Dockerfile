@@ -71,6 +71,7 @@ RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-12 100 && 
     update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-12 100 && \
     update-alternatives --install /usr/bin/llvm-link llvm-link /usr/bin/llvm-link-12 100
 
+RUN apt-get install -y linux-headers-$(uname -r)
 # Prepare Fuzzers
 RUN mkdir /root/fuzzer
 WORKDIR /root/fuzzer

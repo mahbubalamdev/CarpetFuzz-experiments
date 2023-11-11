@@ -8,11 +8,12 @@ Vagrant.configure("2") do |config|
   
       carpetfuzz.vm.network "private_network", ip: "192.168.56.10"
       
+      carpetfuzz.vm.synced_folder ".", "/CarpetFuzz-experiments"
       carpetfuzz.vm.synced_folder ".", "/vagrant", disabled: true
       carpetfuzz.vm.provision "shell", path: "bootstrap.sh"
       carpetfuzz.vm.provider "virtualbox" do |vb|
         vb.name = "carpetfuzz"
-        vb.memory = "8192"
+        vb.memory = "16384"
         vb.cpus = "1"
       end
     end
