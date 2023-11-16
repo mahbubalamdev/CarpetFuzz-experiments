@@ -6,6 +6,7 @@
 From ubuntu:20.04
 # Install required dependencies
 RUN apt update
+RUN apt-get -y install sudo
 RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     build-essential \
     python3-dev \
@@ -202,7 +203,7 @@ WORKDIR /root/dep
 RUN git clone https://github.com/facebook/zstd; cd zstd; make -j install; ln -s /lib/x86_64-linux-gnu/libzstd.so.1 /lib/x86_64-linux-gnu/libzstd.so
 RUN git clone https://github.com/esri/lerc; cd lerc; mkdir tmp; cd tmp; cmake ..; make -j install; ln -s /usr/local/lib/libLerc.so /lib/x86_64-linux-gnu/libLerc.so; ln -s /usr/local/lib/libLerc.so.4 /lib/x86_64-linux-gnu/libLerc.so.4
 RUN git clone https://github.com/ofalk/libdnet.git; cd libdnet; ./configure; make -j install
-RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; ./configure; make -j; make install
+# RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; ./configure; make -j; sudo make install
 RUN wget -O- http://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.8.tar.gz| tar zxv; cd spread-sheet-widget-0.8; ./configure;make -j;make install
 RUN rm -rf /usr/local/go && wget -O- https://go.dev/dl/go1.19.3.linux-amd64.tar.gz |tar zxv -C /usr/local; 
 RUN echo "export GOPATH=/root/go" >> ~/.bashrc; echo "export PATH=$PATH:/root/go/bin:/usr/local/go/bin" >> ~/.bashrc
@@ -252,20 +253,20 @@ RUN git clone https://gitlab.com/libtiff/libtiff libtiff-git-b51bb; cd libtiff-g
 ## OpenSSL
 RUN git clone https://github.com/openssl/openssl openssl-git-31ff3; cd openssl-git-31ff3; git reset --hard 31ff3635371b51c8180838ec228c164aec3774b6
 ### We modified the ui_openssl.c to avoid waiting for user input
-RUN cd openssl-git-31ff3; sed -i '339s/.*/    p = "123456\\n";\n    strcpy(result, p);/' crypto/ui/ui_openssl.c; \
-    CFLAGS="-g -O0" ./config --prefix=$PWD/build_orig no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
-    CFLAGS="-g -fsanitize=address -fno-omit-frame-pointer" ./config --prefix=$PWD/build_asan no-shared enable-asan no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
-    for fuzzer in afl aflfast mopt afl++; do CC=/root/fuzzer/${fuzzer}/afl-clang-fast ./config --prefix=$PWD/build_${fuzzer} enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; done; \
-    CC=/root/fuzzer/CarpetFuzz/fuzzer_afl/afl-clang-fast ./config --prefix=$PWD/build_carpetfuzz enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; \
-    mkdir input; mkdir input/ec; mkdir input/rsa; mkdir input/asn1parse; cp test/testecpub-p256.pem input/ec/; cp test/testrsapub.pem input/rsa/; cp test/testx509.pem input/asn1parse/
+# RUN cd openssl-git-31ff3; sed -i '339s/.*/    p = "123456\\n";\n    strcpy(result, p);/' crypto/ui/ui_openssl.c; \
+#     CFLAGS="-g -O0" ./config --prefix=$PWD/build_orig no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
+#     CFLAGS="-g -fsanitize=address -fno-omit-frame-pointer" ./config --prefix=$PWD/build_asan no-shared enable-asan no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
+#     for fuzzer in afl aflfast mopt afl++; do CC=/root/fuzzer/${fuzzer}/afl-clang-fast ./config --prefix=$PWD/build_${fuzzer} enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; done; \
+#     CC=/root/fuzzer/CarpetFuzz/fuzzer_afl/afl-clang-fast ./config --prefix=$PWD/build_carpetfuzz enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; \
+#     mkdir input; mkdir input/ec; mkdir input/rsa; mkdir input/asn1parse; cp test/testecpub-p256.pem input/ec/; cp test/testrsapub.pem input/rsa/; cp test/testx509.pem input/asn1parse/
 ## Xpdf
 RUN wget -O- https://dl.xpdfreader.com/old/xpdf-4.03.tar.gz| tar zxv; cd xpdf-4.03; \
     mkdir build; cd build; all_cmake; cd ..; \
     mkdir input; cp /root/fuzzer/afl++/testcases/others/pdf/small.pdf input/
 ## Vorbis-tools
-RUN wget -O- https://github.com/xiph/vorbis-tools/archive/refs/tags/v1.4.2.tar.gz |tar zxv; cd vorbis-tools-1.4.2/; \
-    ./autogen.sh; all_configure; \
-    mkdir input; cp /root/fuzzer/fuzzdata/samples/ogg/audio.ogg input/
+# RUN wget -O- https://github.com/xiph/vorbis-tools/archive/refs/tags/v1.4.2.tar.gz |tar zxv; cd vorbis-tools-1.4.2/; \
+#     ./autogen.sh; all_configure;\
+    # mkdir input; cp /root/fuzzer/fuzzdata/samples/ogg/audio.ogg input/
 ## Podofo
 RUN wget -O- http://sourceforge.net/projects/podofo/files/podofo/0.9.8/podofo-0.9.8.tar.gz/download| tar zxv; cd podofo-0.9.8; \
     mkdir build; cd build; all_cmake; cd ..; \
@@ -275,9 +276,9 @@ RUN wget -O- https://github.com/ckolivas/lrzip/archive/refs/tags/v0.651.tar.gz|t
     ./autogen.sh; all_configure; \
     mkdir input; cp /root/fuzzer/afl++/testcases/archives/exotic/lrzip/small_archive.lrz input
 ## Speex
-RUN wget -O- https://github.com/xiph/speex/archive/refs/tags/Speex-1.2.1.tar.gz|tar zxv; cd speex-Speex-1.2.1; \
-    ./autogen.sh; all_configure; \
-    mkdir input; cp /root/fuzzer/fuzzdata/samples/speex/sample.spx input
+# RUN wget -O- https://github.com/xiph/speex/archive/refs/tags/Speex-1.2.1.tar.gz|tar zxv; cd speex-Speex-1.2.1; \
+#     ./autogen.sh; all_configure; \
+#     mkdir input; cp /root/fuzzer/fuzzdata/samples/speex/sample.spx input
 ## Jpegoptim
 RUN wget -O- https://github.com/tjko/jpegoptim/archive/refs/tags/v1.5.0.tar.gz|tar zxv; cd jpegoptim-1.5.0; \
     all_configure; \
@@ -347,9 +348,9 @@ RUN wget -O- https://sourceforge.net/projects/graphicsmagick/files/graphicsmagic
     gclang_configure  --without-zstd; \
     export program="gm";export build_flag="-ljbig -lwebp -lwebpmux -llcms2 -ltiff -lfreetype -ljpeg -lpng16 -lXext -lSM -lICE -lX11 -llzma -lbz2 -lxml2 -lz -lm -lpthread -lomp -lc -luuid -lxcb -ldl -licuuc -lrt -lXau -lXdmcp -licudata -lstdc++ -lgcc_s -lwmflite -lzstd";carpetfuzz++_process;afl++_process;seed_process
 ## Ghostpdl
-RUN wget -O- https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.gz |tar zxv; cd ghostpdl-9.54.0; \
-    gclang_configure LDFLAGS="-ldeflate"; \
-    export program="gs";export build_flag="-ldeflate -lm -ldl -lfontconfig -lfreetype -lpthread -lstdc++ -lgcc_s -lc -lexpat -luuid -lpng16 -lz";carpetfuzz++_process;afl++_process;seed_process
+# RUN wget -O- https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.gz |tar zxv; cd ghostpdl-9.54.0; \
+#     gclang_configure LDFLAGS="-ldeflate"; \
+#     export program="gs";export build_flag="-ldeflate -lm -ldl -lfontconfig -lfreetype -lpthread -lstdc++ -lgcc_s -lc -lexpat -luuid -lpng16 -lz";carpetfuzz++_process;afl++_process;seed_process
 ## Jasper
 RUN wget -O- https://github.com/jasper-software/jasper/releases/download/version-2.0.32/jasper.tar.gz|tar zxv; cd jasper-2.0.32; \
     mkdir tmp;cd tmp; gclang_cmake -DJAS_ENABLE_LIBJPEG=true -DJAS_ENABLE_SHARED=false; cd ..; \

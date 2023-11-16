@@ -2,7 +2,7 @@
 Vagrant.configure("2") do |config|
 
     config.vm.box = "bento/ubuntu-20.04"
-  
+    config.disksize.size = '80GB'
     config.vm.define "carpetfuzz" do |carpetfuzz|
       carpetfuzz.vm.hostname = "carpetfuzz"
   
