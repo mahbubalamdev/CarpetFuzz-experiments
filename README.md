@@ -21,7 +21,7 @@ git clone https://github.com/mahbubalamdev/CarpetFuzz-experiments
 cd CarpetFuzz-experiments
 # Build image
 
-sudo docker build -t mdalam/carpetfuzz-experiment .
+sudo docker build -t mdalam/carpetfuzz-experiment:latest .
 # Create container
 sudo docker run -d -name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null
 sudo docker exec -it carpetfuzz-experiment bash
