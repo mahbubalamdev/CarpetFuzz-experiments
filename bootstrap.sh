@@ -5,6 +5,7 @@ sudo apt-get update
 sudo apt install software-properties-common -y
 sudo apt-get install -y build-essential
 sudo apt-get install -y make gcc
+sudo apt-get install -y jq
 
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 

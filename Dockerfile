@@ -203,7 +203,7 @@ WORKDIR /root/dep
 RUN git clone https://github.com/facebook/zstd; cd zstd; make -j install; ln -s /lib/x86_64-linux-gnu/libzstd.so.1 /lib/x86_64-linux-gnu/libzstd.so
 RUN git clone https://github.com/esri/lerc; cd lerc; mkdir tmp; cd tmp; cmake ..; make -j install; ln -s /usr/local/lib/libLerc.so /lib/x86_64-linux-gnu/libLerc.so; ln -s /usr/local/lib/libLerc.so.4 /lib/x86_64-linux-gnu/libLerc.so.4
 RUN git clone https://github.com/ofalk/libdnet.git; cd libdnet; ./configure; make -j install
-RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; ./configure; make -j; make install
+# RUN git clone https://github.com/luigirizzo/netmap; cd netmap; git reset --hard d67a604e805b67efb563ea8d5eb2d1318acf6ed8; cd LINUX; ./configure; make -j; make install
 RUN wget -O- http://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.8.tar.gz| tar zxv; cd spread-sheet-widget-0.8; ./configure;make -j;make install
 RUN rm -rf /usr/local/go && wget -O- https://go.dev/dl/go1.19.3.linux-amd64.tar.gz |tar zxv -C /usr/local; 
 RUN echo "export GOPATH=/root/go" >> ~/.bashrc; echo "export PATH=$PATH:/root/go/bin:/usr/local/go/bin" >> ~/.bashrc
@@ -251,14 +251,14 @@ RUN git clone https://gitlab.com/libtiff/libtiff libtiff-git-b51bb; cd libtiff-g
     bash ./autogen.sh; all_configure; \
     mkdir input; cp /root/fuzzer/afl++/testcases/images/tiff/not_kitty.tiff input/
 ## OpenSSL
-RUN git clone https://github.com/openssl/openssl openssl-git-31ff3; cd openssl-git-31ff3; git reset --hard 31ff3635371b51c8180838ec228c164aec3774b6
+# RUN git clone https://github.com/openssl/openssl openssl-git-31ff3; cd openssl-git-31ff3; git reset --hard 31ff3635371b51c8180838ec228c164aec3774b6
 ### We modified the ui_openssl.c to avoid waiting for user input
-RUN cd openssl-git-31ff3; sed -i '339s/.*/    p = "123456\\n";\n    strcpy(result, p);/' crypto/ui/ui_openssl.c; \
-    CFLAGS="-g -O0" ./config --prefix=$PWD/build_orig no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
-    CFLAGS="-g -fsanitize=address -fno-omit-frame-pointer" ./config --prefix=$PWD/build_asan no-shared enable-asan no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
-    for fuzzer in afl aflfast mopt afl++; do CC=/root/fuzzer/${fuzzer}/afl-clang-fast ./config --prefix=$PWD/build_${fuzzer} enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; done; \
-    CC=/root/fuzzer/CarpetFuzz/fuzzer_afl/afl-clang-fast ./config --prefix=$PWD/build_carpetfuzz enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; \
-    mkdir input; mkdir input/ec; mkdir input/rsa; mkdir input/asn1parse; cp test/testecpub-p256.pem input/ec/; cp test/testrsapub.pem input/rsa/; cp test/testx509.pem input/asn1parse/
+# RUN cd openssl-git-31ff3; sed -i '339s/.*/    p = "123456\\n";\n    strcpy(result, p);/' crypto/ui/ui_openssl.c; \
+#     CFLAGS="-g -O0" ./config --prefix=$PWD/build_orig no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
+#     CFLAGS="-g -fsanitize=address -fno-omit-frame-pointer" ./config --prefix=$PWD/build_asan no-shared enable-asan no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug;make -j;make install;make clean; \
+#     for fuzzer in afl aflfast mopt afl++; do CC=/root/fuzzer/${fuzzer}/afl-clang-fast ./config --prefix=$PWD/build_${fuzzer} enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; done; \
+#     CC=/root/fuzzer/CarpetFuzz/fuzzer_afl/afl-clang-fast ./config --prefix=$PWD/build_carpetfuzz enable-fuzz-afl no-shared no-module -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment --debug; make -j; make install; make clean; \
+#     mkdir input; mkdir input/ec; mkdir input/rsa; mkdir input/asn1parse; cp test/testecpub-p256.pem input/ec/; cp test/testrsapub.pem input/rsa/; cp test/testx509.pem input/asn1parse/
 ## Xpdf
 RUN wget -O- https://dl.xpdfreader.com/old/xpdf-4.03.tar.gz| tar zxv; cd xpdf-4.03; \
     mkdir build; cd build; all_cmake; cd ..; \

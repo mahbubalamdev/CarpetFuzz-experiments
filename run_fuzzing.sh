@@ -43,7 +43,7 @@ runOnCarpetFuzzDataset() {
     cpu_bind=0
 
     # 48 hours
-    timeout_seconds=172800
+    timeout_seconds=1200 # 20 minutes
     programs_dir=${programs_carpetfuzz_dataset_dir}
 
     for key in $(echo $config_carpetfuzz_dataset|jq keys[]); do
