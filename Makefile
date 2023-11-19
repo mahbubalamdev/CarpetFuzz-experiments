@@ -6,3 +6,5 @@ run:
 	docker rm carpetfuzz-experiment || true
 	docker run -d --name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null
 
+clean:
+	docker rmi $(docker images -f "dangling=true" -q)
