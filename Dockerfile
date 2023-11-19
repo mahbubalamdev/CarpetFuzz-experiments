@@ -410,7 +410,7 @@ RUN wget -O- https://github.com/VirusTotal/yara/archive/refs/tags/v4.1.1.tar.gz|
 
 # Clone CarpetFuzz-experiments repo
 WORKDIR /root
-RUN git clone https://github.com/waugustus/CarpetFuzz-experiments
+RUN git clone https://github.com/mahbubalamdev/CarpetFuzz-experiments
 
 # All finished
 WORKDIR /root/CarpetFuzz-experiments
