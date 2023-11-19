@@ -36,25 +36,6 @@
         "stub": "lrzip -f -p 1 @@ -o /tmp/foo",
         "timeout": "5000+"
     }, 
-    "ogg123": {
-        "package": "vorbis-tools-1.4.2",
-        "stub": "ogg123 @@ -d wav -f /tmp/foo",
-        "timeout": "5000+"
-    }, 
-    "openssl-asn1parse": {
-        "package": "openssl-git-31ff3", 
-        "stub": "openssl asn1parse -in @@ -out /tmp/foo",
-        "prioritization": "true"
-    }, 
-    "openssl-ec": {
-        "package": "openssl-git-31ff3", 
-        "stub": "openssl ec -in @@ -out /tmp/foo",
-        "prioritization": "true"
-    },  
-    "openssl-rsa": {
-        "package": "openssl-git-31ff3", 
-        "stub": "openssl rsa -in @@ -out /tmp/foo"
-    }, 
     "pdftops": {
         "package": "xpdf-4.03", 
         "stub": "pdftops @@ /tmp/foo"
@@ -67,13 +48,7 @@
     "podofoencrypt": {
         "package": "podofo-0.9.8",
         "stub": "podofoencrypt -o 123456 @@ /tmp/foo"
-    }, 
-    "speexdec": {
-        "package": "speex-Speex-1.2.1",
-        "stub": "speexdec @@ /tmp/foo",
-        "prioritization": "true",
-        "timeout": "5000+"
-    }, 
+    },
     "tcpprep": {
         "package": "tcpreplay-4.4.2",
         "stub": "tcpprep -a client -i @@ -o /tmp/foo"

@@ -408,6 +408,8 @@ RUN wget -O- https://github.com/VirusTotal/yara/archive/refs/tags/v4.1.1.tar.gz|
     ./bootstrap.sh; gclang_configure; \
     export program="yara";export build_flag="-lcrypto -lm -lpthread -lc -ldl";carpetfuzz++_process;afl++_process;seed_process
 
+RUN apt-get install man-db -y
+RUN mandb
 # Clone CarpetFuzz-experiments repo
 WORKDIR /root
 RUN git clone https://github.com/mahbubalamdev/CarpetFuzz-experiments
