@@ -2,7 +2,7 @@ build:
 	docker build -t mdalam/carpetfuzz-experiment .
 
 run:
-	docker run -d --name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null
+	docker run -d --name "carpetfuzz-experiment" -v .:/root/CarpetFuzz-experiments mdalam/carpetfuzz-experiment tail -f /dev/null
 
 exec:
 	docker exec -it carpetfuzz-experiment bash
