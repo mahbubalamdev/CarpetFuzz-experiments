@@ -411,8 +411,7 @@ RUN wget -O- https://github.com/VirusTotal/yara/archive/refs/tags/v4.1.1.tar.gz|
 RUN apt-get install man-db -y
 RUN mandb
 # Clone CarpetFuzz-experiments repo
-WORKDIR /root
-RUN git clone https://github.com/mahbubalamdev/CarpetFuzz-experiments
+COPY . /root/CarpetFuzz-experiments
 
 # All finished
 WORKDIR /root/CarpetFuzz-experiments
