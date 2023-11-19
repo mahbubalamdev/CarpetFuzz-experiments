@@ -11,3 +11,6 @@ clean:
 	docker stop carpetfuzz-experiment || true
 	docker rm carpetfuzz-experiment || true
 	docker rmi $(docker images -f "dangling=true" -q)
+
+analyze_manpages:
+	python3 analyze_manpages.py 2>&1 | tee analyze.log
