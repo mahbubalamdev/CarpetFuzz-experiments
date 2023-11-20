@@ -1,0 +1,1 @@
+{"options": {"total_options": ["-N", "-s", "-Z", "-v", "-L", "-m", "-Y", "-X", "-H", "-i", "-S", "-k", "-l", "-O", "-P", "-e", "-h", "-M", "-E", "-F", "-f", "-C", "-I", "-w", "-K", "-U", "-V", "-t", "-p", "-J", "-B", "-c", "-r", "-z", "-R"], "conflict_options": [["-X", "-Y"], ["-B", "-L"], ["-s", "-t"]], "dependent_options": {"-O": "-P"}}}

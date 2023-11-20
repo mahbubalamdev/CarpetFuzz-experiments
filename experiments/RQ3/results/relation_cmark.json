@@ -1,0 +1,1 @@
+{"options": {"total_options": ["--safe", "--unsafe", "--smart", "--width", "--nobreaks", "--hardbreaks", "--to", "--validate-utf8", "--help", "--version", "--sourcepos"], "conflict_options": [["--unsafe", "--safe"], ["--hardbreaks", "--nobreaks"]], "dependent_options": {}}}
