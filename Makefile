@@ -10,7 +10,7 @@ exec:
 clean:
 	docker stop carpetfuzz-experiment || true
 	docker rm carpetfuzz-experiment || true
-	docker rmi $(docker images -f "dangling=true" -q)
+	docker rmi $$(docker images | grep none | awk '{print $$3}')
 
 analyze_manpages:
 	python3 analyze_manpages.py 2>&1 | tee analyze.log
