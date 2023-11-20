@@ -18,3 +18,10 @@ Execute the following commands:
 ```
 $ python3 scripts/analyze_results.py
 ```
+
+```
+Type             Dataset          Accuracy   FPR        Recall    
+Explicit         Validation       92.90%     11.49%     98.42%    
+Explicit         CarpetFuzz       98.91%     0.45%      88.57%    
+Implicit         CarpetFuzz       93.53% (Precision)    76.02%
+```

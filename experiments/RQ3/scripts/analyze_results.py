@@ -23,8 +23,11 @@ if __name__ == "__main__":
 
         extracted_data_path = os.path.join(results_dir, "relation_%s.json" % program)
 
-        with open(extracted_data_path, "r") as f:
-            extracted_data = json.loads(f.read())
+        try:
+            with open(extracted_data_path, "r") as f:
+                extracted_data = json.loads(f.read())
+        except:
+            continue
 
         for conflict_pair in extracted_data["options"]['conflict_options']:
 
