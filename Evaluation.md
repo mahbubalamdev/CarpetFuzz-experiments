@@ -8,4 +8,7 @@ docker exec -it carpetfuzz-experiment bash
 
 screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 2 -p 4 -s 2>&1 |tee fuzzing.log" 
 
+# Initial test
+screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 1 -p 2 -s 2>&1 |tee fuzzing.log" 
+
 python3 analyze_manpages.py 2>&1 | tee analyze.log
