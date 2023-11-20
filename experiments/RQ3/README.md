@@ -16,3 +16,10 @@ Execute the following commands:
 ```
 $ python3 scripts/analyze_results.py
 ```
+
+```
+Type             Precision  Recall    
+Conflict         93.08%     78.72%    
+Dependent        88.89%     72.73%    
+All              92.66%     78.10%  
+```
