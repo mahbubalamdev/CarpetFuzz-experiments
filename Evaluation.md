@@ -8,6 +8,8 @@ docker exec -it carpetfuzz-experiment bash
 
 screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 2 -p 4 -s 2>&1 |tee fuzzing.log" 
 
+screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 1 -p 1 -s 2>&1 |tee fuzzing.log" 
+
 # Initial test
 screen -dmS test bash -c "./run_fuzzing.sh -r 1 -p 2 -s 2>&1 |tee fuzzing-test.log" 
 

@@ -410,6 +410,9 @@ RUN wget -O- https://github.com/VirusTotal/yara/archive/refs/tags/v4.1.1.tar.gz|
 
 RUN apt-get install man-db -y
 RUN mandb
+
+ENV AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+
 # Clone CarpetFuzz-experiments repo
 COPY . /root/CarpetFuzz-experiments
 

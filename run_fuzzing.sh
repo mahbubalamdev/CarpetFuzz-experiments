@@ -42,7 +42,7 @@ runOnCarpetFuzzDataset() {
 
     cpu_bind=0
 
-    timeout_seconds=36000 # 10 hours
+    timeout_seconds=600 # 10 hours
     # timeout_seconds=18000 # 5 hours
     programs_dir=${programs_carpetfuzz_dataset_dir}
 
@@ -164,7 +164,7 @@ runOnPowerDataset() {
                 slice="-t ${timeout}"
             fi                
 
-            cmd="screen -dmS ${task} timeout ${timeout_seconds}s ${fuzzer_path}/afl-fuzz -i ${input_path} -o ${output_path} -b ${cpu_bind} -m none ${slice} -K ${argvs_path} -- ${build_path}/bin/${stub}; echo \"Fuzzing ${task}\"; sleep ${timeout_seconds}"
+            cmd="screen -dmS ${task}  timeout ${timeout_seconds}s ${fuzzer_path}/afl-fuzz -i ${input_path} -o ${output_path} -b ${cpu_bind} -m none ${slice} -K ${argvs_path} -- ${build_path}/bin/${stub}; echo \"Fuzzing ${task}\"; sleep ${timeout_seconds}"
 
             cmd="LD_LIBRARY_PATH=${build_path}/lib $cmd"
 
