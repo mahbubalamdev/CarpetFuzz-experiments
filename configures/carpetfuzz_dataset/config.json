@@ -1,4 +1,28 @@
 {
+    "cmark": {
+        "package": "cmark-git-9c8e8",
+        "stub": "cmark @@",
+        "prioritization": "true"
+    },
+    "editcap": {
+        "package": "wireshark-4.0.1",
+        "stub": "editcap @@ /tmp/foo",
+        "prioritization": "true"
+    },
+    "eu-elfclassify": {
+        "package": "elfutils-0.188",
+        "stub": "eu-elfclassify @@"
+    }, 
+    "img2sixel": {
+        "package": "libsixel-git-6a5be",
+        "stub": "img2sixel @@ -o /tmp/foo",
+        "prioritization": "true"
+    }, 
+    "jpegoptim": {
+        "package": "jpegoptim-1.5.0",
+        "stub": "jpegoptim @@",
+        "prioritization": "true"
+    }, 
     "jpegtran": {
         "package": "libjpeg-turbo-2.1.4",
         "stub": "jpegtran -outfile /tmp/foo @@"
