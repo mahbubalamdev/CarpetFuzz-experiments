@@ -42,7 +42,7 @@ runOnCarpetFuzzDataset() {
 
     cpu_bind=0
 
-    timeout_seconds=600 # 10 hours
+    timeout_seconds=36000 # 10 hours
     # timeout_seconds=18000 # 5 hours
     programs_dir=${programs_carpetfuzz_dataset_dir}
 
