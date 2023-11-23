@@ -1,0 +1,4 @@
+# environment variables:
+AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+# command line:
+'/root/fuzzer/afl++/afl-fuzz' '-i' '/root/programs/libsixel-git-6a5be/input' '-o' '/root/CarpetFuzz-experiments/output/carpetfuzz_dataset/img2sixel_afl++_1' '-b' '12' '-m' 'none' '--' '/root/programs/libsixel-git-6a5be/build_afl++/bin/img2sixel' '@@' '-o' '/tmp/foo'

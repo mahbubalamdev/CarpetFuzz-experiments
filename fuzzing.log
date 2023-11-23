@@ -1,4 +1,28 @@
-[*] Number of cores to be used: 1, repeat 1 times
+[*] Number of cores to be used: 20, repeat 2 times
 [*] Get the commands list for CarpetFuzz dataset ...
 [*] Start Fuzzing ...
-Fuzzing cmark_afl_1
+Fuzzing cmark_afl++_1
+Fuzzing cmark_carpetfuzz_1
+Fuzzing cmark_carpetfuzz_random_1
+Fuzzing cmark_afl++_2
+Fuzzing cmark_carpetfuzz_2
+Fuzzing cmark_carpetfuzz_random_2
+Fuzzing editcap_afl++_1
+Fuzzing editcap_carpetfuzz_1
+Fuzzing editcap_carpetfuzz_random_1
+Fuzzing editcap_afl++_2
+Fuzzing editcap_carpetfuzz_2
+Fuzzing editcap_carpetfuzz_random_2
+Fuzzing img2sixel_afl++_1
+Fuzzing img2sixel_carpetfuzz_1
+Fuzzing img2sixel_carpetfuzz_random_1
+Fuzzing img2sixel_afl++_2
+Fuzzing img2sixel_carpetfuzz_2
+Fuzzing img2sixel_carpetfuzz_random_2
+Fuzzing jpegoptim_afl++_1
+Fuzzing jpegoptim_carpetfuzz_1
+Fuzzing jpegoptim_carpetfuzz_random_1
+Fuzzing jpegoptim_afl++_2
+Fuzzing jpegoptim_carpetfuzz_2
+Fuzzing jpegoptim_carpetfuzz_random_2
+[OK] All finished, results are saved in output/.

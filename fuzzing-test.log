@@ -1,0 +1,10 @@
+[*] Number of cores to be used: 20, repeat 1 times
+[*] Get the commands list for CarpetFuzz dataset ...
+[*] Start Fuzzing ...
+Fuzzing cmark_afl++_1
+Fuzzing cmark_carpetfuzz_1
+Fuzzing cmark_carpetfuzz_random_1
+Fuzzing editcap_afl++_1
+Fuzzing editcap_carpetfuzz_1
+Fuzzing editcap_carpetfuzz_random_1
+[OK] All finished, results are saved in output/.
