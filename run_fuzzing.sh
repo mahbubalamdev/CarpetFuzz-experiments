@@ -42,8 +42,7 @@ runOnCarpetFuzzDataset() {
 
     cpu_bind=0
 
-    timeout_seconds=36000 # 10 hours
-    # timeout_seconds=18000 # 5 hours
+    timeout_seconds=172800 # 48 hours
     programs_dir=${programs_carpetfuzz_dataset_dir}
 
     for key in $(echo $config_carpetfuzz_dataset|jq keys[]); do
@@ -64,7 +63,7 @@ runOnCarpetFuzzDataset() {
         fi
 
         for index in $(seq 1 "${repeat}"); do
-            for fuzzer in "afl++" "carpetfuzz" "carpetfuzz_random"; do
+            for fuzzer in "afl" "aflfast" "mopt" "afl++" "carpetfuzz" "carpetfuzz_random"; do
                 
                 if [[ "$fuzzer" == "carpetfuzz_random" && "${prioritization}" == null ]]; then
                     continue
