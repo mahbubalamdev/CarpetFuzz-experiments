@@ -1,0 +1,27 @@
+start_time        : 1701470836
+last_update       : 1701546101
+fuzzer_pid        : 1431002
+cycles_done       : 0
+execs_done        : 1230855
+execs_per_sec     : 12.21
+paths_total       : 603
+paths_favored     : 36
+paths_found       : 602
+paths_imported    : 0
+max_depth         : 10
+cur_path          : 589
+pending_favs      : 6
+pending_total     : 480
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 3.29%
+unique_crashes    : 0
+unique_hangs      : 0
+last_path         : 1701545785
+last_crash        : 0
+last_hang         : 0
+execs_since_crash : 1230855
+exec_timeout      : 260
+afl_banner        : pdftotext
+afl_version       : 2.51b
+command_line      : /root/fuzzer/aflfast/afl-fuzz -i /root/programs/xpdf-4.03/input -o /root/CarpetFuzz-experiments/output/carpetfuzz_dataset/pdftotext_aflfast_3 -b 5 -m none -- /root/programs/xpdf-4.03/build_aflfast/bin/pdftotext @@ /tmp/foo

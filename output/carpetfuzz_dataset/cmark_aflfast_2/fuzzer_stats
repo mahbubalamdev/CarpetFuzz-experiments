@@ -1,0 +1,27 @@
+start_time        : 1700779618
+last_update       : 1700952414
+fuzzer_pid        : 3273
+cycles_done       : 0
+execs_done        : 6302361
+execs_per_sec     : 33.60
+paths_total       : 4537
+paths_favored     : 948
+paths_found       : 4536
+paths_imported    : 0
+max_depth         : 3
+cur_path          : 1859
+pending_favs      : 918
+pending_total     : 4380
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 8.77%
+unique_crashes    : 0
+unique_hangs      : 0
+last_path         : 1700951585
+last_crash        : 0
+last_hang         : 0
+execs_since_crash : 6302361
+exec_timeout      : 20
+afl_banner        : cmark
+afl_version       : 2.51b
+command_line      : /root/fuzzer/aflfast/afl-fuzz -i /root/programs/cmark-git-9c8e8/input -o /root/CarpetFuzz-experiments/output/carpetfuzz_dataset/cmark_aflfast_2 -b 7 -m none -- /root/programs/cmark-git-9c8e8/build_aflfast/bin/cmark @@

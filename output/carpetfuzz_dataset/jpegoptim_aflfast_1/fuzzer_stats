@@ -1,0 +1,27 @@
+start_time        : 1701125256
+last_update       : 1701298052
+fuzzer_pid        : 3936418
+cycles_done       : 26
+execs_done        : 5597943
+execs_per_sec     : 44.55
+paths_total       : 105
+paths_favored     : 15
+paths_found       : 104
+paths_imported    : 0
+max_depth         : 10
+cur_path          : 104
+pending_favs      : 0
+pending_total     : 3
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 0.41%
+unique_crashes    : 2
+unique_hangs      : 0
+last_path         : 1701226096
+last_crash        : 1701130663
+last_hang         : 0
+execs_since_crash : 5392214
+exec_timeout      : 60
+afl_banner        : jpegoptim
+afl_version       : 2.51b
+command_line      : /root/fuzzer/aflfast/afl-fuzz -i /root/programs/jpegoptim-1.5.0/input -o /root/CarpetFuzz-experiments/output/carpetfuzz_dataset/jpegoptim_aflfast_1 -b 15 -m none -- /root/programs/jpegoptim-1.5.0/build_aflfast/bin/jpegoptim @@

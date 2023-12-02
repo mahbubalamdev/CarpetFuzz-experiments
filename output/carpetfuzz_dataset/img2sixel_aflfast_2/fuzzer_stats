@@ -1,0 +1,27 @@
+start_time        : 1701125220
+last_update       : 1701298016
+fuzzer_pid        : 3915152
+cycles_done       : 2
+execs_done        : 5925907
+execs_per_sec     : 27.08
+paths_total       : 1341
+paths_favored     : 151
+paths_found       : 1340
+paths_imported    : 0
+max_depth         : 16
+cur_path          : 1291
+pending_favs      : 31
+pending_total     : 992
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 3.39%
+unique_crashes    : 0
+unique_hangs      : 4
+last_path         : 1701236395
+last_crash        : 0
+last_hang         : 1701181188
+execs_since_crash : 5925907
+exec_timeout      : 100
+afl_banner        : img2sixel
+afl_version       : 2.51b
+command_line      : /root/fuzzer/aflfast/afl-fuzz -i /root/programs/libsixel-git-6a5be/input -o /root/CarpetFuzz-experiments/output/carpetfuzz_dataset/img2sixel_aflfast_2 -b 3 -m none -- /root/programs/libsixel-git-6a5be/build_aflfast/bin/img2sixel @@ -o /tmp/foo
