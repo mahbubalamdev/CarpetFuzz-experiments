@@ -91,3 +91,4 @@ Fuzzing pdftotext_mopt_3
 Fuzzing pdftotext_afl++_3
 Fuzzing pdftotext_carpetfuzz_3
 Fuzzing pdftotext_carpetfuzz_random_3
+[OK] All finished, results are saved in output/.
