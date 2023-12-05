@@ -1,0 +1,6 @@
+[OK] Found 27 crashes:
+    - cmark: 0
+    - editcap: 0
+    - img2sixel: 0
+    - jpegoptim: 27
+    - pdftotext: 0

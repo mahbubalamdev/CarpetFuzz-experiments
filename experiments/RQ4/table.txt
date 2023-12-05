@@ -1,0 +1,8 @@
+                     Compare to AFL             Compare to ALL          
+Program              Ranked   Random   Rate     Ranked   Random   Rate    
+cmark                533.0    549.0    97.09%   521.0    532.3    94.90%  
+editcap              378.3    336.0    112.60%  357.3    322.0    106.35% 
+img2sixel            517.0    475.7    108.69%  431.7    438.7    90.75%  
+jpegoptim            92.3     97.7     94.54%   91.3     96.7     93.52%  
+pdftotext            61.3     67.7     90.64%   60.0     60.0     88.67%  
+Average              158.20   152.60   50.36%   146.13   144.97   47.42%  
