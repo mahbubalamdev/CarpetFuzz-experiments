@@ -4,9 +4,9 @@ docker rm carpetfuzz-experiment
 docker run -d --name "carpetfuzz-experiment" mdalam/carpetfuzz-experiment tail -f /dev/null
 docker exec -it carpetfuzz-experiment bash
 
-10 * 3 fuzzers * 4 programs * 2 repetions = 240 hours = 10 days
+48 hours * 6 fuzzers * 5 programs * 3 repetions = 7200 hours = 300 days
 
-screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 2 -p 4 -s 2>&1 |tee fuzzing.log" 
+screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 3 -p 5 -s 2>&1 |tee fuzzing.log" 
 
 screen -dmS fuzzing bash -c "./run_fuzzing.sh -r 1 -p 1 -s 2>&1 |tee fuzzing.log" 
 
